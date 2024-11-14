@@ -1,0 +1,74 @@
+# file: pyproject.toml
+
+
+# Build system configuration
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+
+# Project metadata
+[project]
+name = "zeratulhx_epi_models"
+dynamic = ["version"]
+dependencies = [
+    "matplotlib",
+]
+
+# A simple summary of the project
+description = "My wonderful Python package"
+
+
+# Full description of the project.
+# Should be the path to your README file, relative to pyproject.toml
+readme = "README.md"
+
+# The Python version required by the project
+requires-python = ">=3.8"
+
+# The license of your project.
+# Can be provided as a file or a text description.
+# Discussed in the lesson on publishing
+
+license = {text = "MIT"}
+
+
+
+# Authors / maintainers
+# Each entry can have a name and/or an email
+authors = [
+    {name = "Hengxin Pan", email = "pan.h@wehi.edu.au"},
+]
+
+
+
+# Project URLs
+[project.urls]
+homepage = "https://github.com/zeratulhx/learn-hatch"
+documentation = "https://github.com/zeratulhx/learn-hatch"
+repository = "https://github.com/zeratulhx/learn-hatch"
+
+# Hatch build configuration
+[tool.hatch.build]
+source = "src"
+# Hatch versioning configuration
+[tool.hatch.version]
+source = "vcs"
+
+# Version control system (VCS) versioning
+[tool.hatch.version.vcs]
+tag-pattern = "v*"  # Git tags starting with 'v' will be used for versioning
+fallback-version = "0.0.0"
+
+# Version file location for VCS
+[tool.hatch.build.hooks.vcs]
+version-file = "src/zeratulhx_epi_models/_version.py"
+
+# Add entry points
+[project.scripts]
+epi_models = "zeratulhx_epi_models.SIR:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
